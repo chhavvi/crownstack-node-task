@@ -1,7 +1,8 @@
-'use strict';
+"use strict";
 
-import { Model, DataTypes, SmallIntegerDataType } from 'sequelize';
-import {  SEQ_CONNECTION } from '../config/db';
+import { Model, DataTypes, SmallIntegerDataType } from "sequelize";
+import { SEQ_CONNECTION } from "../config/db";
+import { Cart } from "./cart";
 
 export class Users extends Model {
   public id: number;
@@ -38,30 +39,23 @@ Users.init(
       type: new DataTypes.STRING(128),
       allowNull: true,
     },
-    is_email_verified: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
     status: {
       type: new DataTypes.SMALLINT(),
       defaultValue: 1,
     },
-    profile_status: {
-      type: new DataTypes.SMALLINT(),
-      defaultValue: 0,
-      // comment:'0 for incomplete , 1 for verified or complete, 2 for reject'
-    },
     language: {
       type: DataTypes.STRING(10),
-      defaultValue: 'en',
+      defaultValue: "en",
     },
     time_format: {
       type: DataTypes.STRING(10),
-      defaultValue: 'true',
+      defaultValue: "true",
     },
   },
   {
-    tableName: 'user',
+    tableName: "user",
     sequelize: SEQ_CONNECTION, // this bit is important db refrence
-  },
+  }
 );
+
+
